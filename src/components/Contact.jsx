@@ -9,9 +9,7 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
 
-// service_v7vlh7s
-// template_bil1ukw
-// ma8QZCDJZ589LvP0a
+// Pastikan variabel ini ada di file .env Anda
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
@@ -32,8 +30,8 @@ const Contact = () => {
 
     emailjs
       .send(
-        "service_v7vlh7s",
-        "template_bil1ukw",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           name: form.name,    
           email: form.email,    
@@ -42,7 +40,7 @@ const Contact = () => {
           to_email: "nizaram4dhan@gmail.com",
           reply_to: form.email,
         },
-        "ma8QZCDJZ589LvP0a"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
