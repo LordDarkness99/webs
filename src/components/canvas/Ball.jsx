@@ -21,13 +21,11 @@ const Ball = (props) => {
 
       <mesh castShadow receiveShadow scale={2.75}>
         {/* 🔥 Smooth Sphere Geometry */}
-        <sphereGeometry args={[1, 24, 24]} />
+        <sphereGeometry args={[1, 64, 64]} />
 
         {/* Smooth Material (No flatShading) */}
         <meshStandardMaterial
           color="#ffffff"
-          roughness={0.5}
-          metalness={0.2}
           polygonOffset
           polygonOffsetFactor={-5}
         />
@@ -44,13 +42,11 @@ const Ball = (props) => {
   );
 };
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
 const BallCanvas = ({ icon }) => {
   return (
     <Canvas
-      frameloop="demand"
-      dpr={isMobile ? 1 : [1, 1]}
+      frameloop="always"
+      dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>

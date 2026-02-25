@@ -33,7 +33,6 @@ const Computers = ({ isMobile }) => {
     </mesh>
   );
 };
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -58,7 +57,7 @@ const ComputersCanvas = () => {
     <Canvas
       frameloop="demand"
       shadows
-      dpr={isMobile ? 1 : [1, 1]}
+      dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
     >
