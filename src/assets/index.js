@@ -10,7 +10,7 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 
 import python from "./tech/python.svg";
-import cpp from "./tech/c++.svg";
+import cpp from "./tech/cpp.svg";
 import r from "./tech/r.svg";
 import scala from "./tech/scala.svg";
 import csharp from "./tech/csharp.svg";
