@@ -10,6 +10,8 @@ import {
 
 import CanvasLoader from "../Loader";
 
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]);
 
@@ -46,7 +48,7 @@ const BallCanvas = ({ icon }) => {
   return (
     <Canvas
       frameloop="always"
-      dpr={[1, 2]}
+      dpr={[1, 1]}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
