@@ -1,0 +1,50 @@
+# --- DEPENDENCIES ---
+# Mengabaikan folder library pihak ketiga
+node_modules/
+jspm_packages/
+
+# --- BUILD OUTPUTS ---
+# Mengabaikan hasil kompilasi dan bundler
+dist/
+dist-ssr/
+build/
+out/
+.next/
+.svelte-kit/
+
+# --- LOG FILES ---
+# Mengabaikan semua file log aplikasi dan package manager
+*.log
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- ENVIRONMENT & SECRETS ---
+# Mengabaikan file konfigurasi lokal dan variabel lingkungan sensitif
+.env
+*.local
+.env.local
+.env.*.local
+
+# --- IDE & EDITOR ---
+# Mengabaikan konfigurasi spesifik editor (VS Code, JetBrains, dll)
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.classpath
+.project
+.settings/
+
+# --- SYSTEM FILES ---
+# Mengabaikan file sampah dari sistem operasi
+.DS_Store
+Thumbs.db
+desktop.ini
