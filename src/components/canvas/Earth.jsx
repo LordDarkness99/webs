@@ -1,54 +1,43 @@
-import React from "react";
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber"; // everything 3d related apear from Canva
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import React, { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Preload, useTexture } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Earth = () => {
-  const earth = useGLTF("./meteor/scene.gltf");
+  const meshRef = useRef();
+
+  const [colorMap] = useTexture(["/projects/planet.jpg"]);
+
+  // Auto rotate
+  useFrame((_, delta) => {
+    meshRef.current.rotation.y += delta * 0.2;
+  });
 
   return (
-    <primitive object={earth.scene} scale={2} position-y={0} rotation-y={0} />
+    <mesh ref={meshRef}>
+      <sphereGeometry args={[2, 64, 64]} />
+      <meshStandardMaterial map={colorMap} />
+    </mesh>
   );
 };
 
 const EarthCanvas = () => {
   return (
-  <Canvas
-    shadows
-    frameloop="demand"
-    gl={{ preserveDrawingBuffer: true }}
-    camera={{
-      fov: 45,
-      near: 0.1,
-      far: 200,
-      position: [-4, 3, 6],
-    }}
-  >
-    <Suspense fallback={<CanvasLoader />}>
+    <Canvas
+      shadows
+      camera={{ position: [0, 0, 6], fov: 45 }}
+      gl={{ preserveDrawingBuffer: true }}
+    >
+      <Suspense fallback={<CanvasLoader />}>
+        <ambientLight intensity={1} />
+        <directionalLight position={[5, 5, 5]} intensity={2} />
 
-      {/* Tambahkan lighting */}
-      <ambientLight intensity={1.2} />
+        <OrbitControls enableZoom={false} autoRotate={false} />
+        <Earth />
+      </Suspense>
 
-      <directionalLight
-        position={[5, 5, 5]}
-        intensity={2}
-      />
-
-      <OrbitControls
-        autoRotate
-        enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
-      />
-
-      <Earth />
-
-    </Suspense>
-
-    <Preload all />
-  </Canvas>
-
+      <Preload all />
+    </Canvas>
   );
 };
 
