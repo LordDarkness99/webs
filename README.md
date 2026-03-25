@@ -40,7 +40,7 @@ to create a unique user experience.
 
 Clone the repository:
 
-git clone https://github.com/AimTheSun/portofolio-website-3d.git
+git clone [https://github.com/AimTheSun/portofolio-website-3d.git](https://github.com/LordDarkness99/webs.git)
 
 Navigate to the project folder:
 
